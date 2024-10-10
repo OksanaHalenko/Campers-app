@@ -4,6 +4,8 @@ import HomePage from "../../pages/HomePage/HomePage";
 import CatalogPage from "../../pages/CatalogPage/CatalogPage";
 import CamperPage from "../../pages/CamperPage/CamperPage";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
+import Features from "../Features/Features";
+import Reviews from "../Reviews/Reviews";
 
 function App() {
   return (
@@ -12,7 +14,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/campers" element={<CatalogPage />} />
-          <Route path="/campers/:id" element={<CamperPage />} />
+          <Route path="/campers/:id" element={<CamperPage />}>
+            <Route path="features" element={<Features />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
