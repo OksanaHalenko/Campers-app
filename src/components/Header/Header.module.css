@@ -1,0 +1,37 @@
+.wrapper {
+  border-bottom: 1px solid #f2f4f7;
+  background-color: #f7f7f7;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  column-gap: 450px;
+  padding: 24px 64px;
+}
+
+.navigationList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 32px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.link {
+  color: #101828;
+  transition: color 0.5s ease-in;
+}
+
+.active {
+  color: #d84343;
+}
