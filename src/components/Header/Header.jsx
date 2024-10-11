@@ -1,6 +1,5 @@
-import Logo from "../Logo/Logo";
 import css from "./Header.module.css";
-
+import sprite from "../../assets/icons/sprite.svg";
 import { Link, NavLink } from "react-router-dom";
 
 const buildLinkClass = ({ isActive }) => {
@@ -11,7 +10,9 @@ const Header = () => (
   <header className={css.wrapper}>
     <nav className={css.navigation}>
       <Link to="/">
-        <Logo />
+        <svg className={css.icon}>
+          <use href={`${sprite}#icon-logo`}></use>
+        </svg>
       </Link>
       <ul className={css.navigationList}>
         <li>
