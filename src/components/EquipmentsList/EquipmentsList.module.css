@@ -1,0 +1,30 @@
+.equipmentList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+}
+
+.equipmentItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 100px;
+  background-color: #f2f4f7;
+  mix-blend-mode: multiply;
+
+  color: #101828;
+  text-align: center;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-transform: capitalize;
+  cursor: default;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}

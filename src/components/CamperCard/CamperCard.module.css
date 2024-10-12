@@ -48,10 +48,25 @@
   column-gap: 12px;
 }
 
+.isFavoriteBtn {
+  all: unset;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.isFavoriteBtn:hover,
+.isFavoriteBtn:focus {
+  outline: none;
+}
+
 .iconHeart {
   height: 24px;
   width: 24px;
 }
+.iconHeart.isActive {
+  fill: #e44848;
+}
+
 .location {
   display: flex;
   column-gap: 16px;
@@ -88,4 +103,25 @@
   width: 525px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+}
+.btn {
+  display: inline-block;
+  max-width: 86px;
+  padding: 16px 60px;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+  border-radius: 200px;
+  background-color: #e44848;
+  transition: background-color ease-in;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #d84343;
+  color: #fff;
 }

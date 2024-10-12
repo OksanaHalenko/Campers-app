@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import css from "./CamperCard.module.css";
 import sprite from "../../assets/icons/sprite.svg";
+import EquipmentsList from "../EquipmentsList/EquipmentsList";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../../redux/campers/slice";
+import { selectorFavorite } from "../../redux/campers/selectors";
 
 function CamperCard({
   data: {
@@ -12,8 +16,24 @@ function CamperCard({
     location,
     rating,
     totalReviews,
+    AC,
+    bathroom,
+    adults,
+    engine,
+    kitchen,
+    transmission,
+    TV,
+    radio,
   },
 }) {
+  const dispatch = useDispatch();
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(id));
+  };
+  const favoriteItems = useSelector(selectorFavorite);
+  const isFavorite = favoriteItems.includes(id);
+  console.log(isFavorite);
+
   return (
     <div className={css.card}>
       <img className={css.image} src={gallery[0].original} loading="lazy" />
@@ -23,9 +43,18 @@ function CamperCard({
             <p className={css.name}>{name}</p>
             <div className={css.priceWrapper}>
               <p className={css.price}>€{price}</p>
-              <svg className={css.iconHeart}>
-                <use href={`${sprite}#icon-heart`}></use>
-              </svg>
+              <button
+                className={css.isFavoriteBtn}
+                onClick={handleToggleFavorite}
+              >
+                <svg
+                  className={`${css.iconHeart} ${
+                    isFavorite ? css.isActive : ""
+                  }`}
+                >
+                  <use href={`${sprite}#icon-heart`}></use>
+                </svg>
+              </button>
             </div>
           </div>
           <ul className={css.location}>
@@ -46,6 +75,16 @@ function CamperCard({
           </ul>
         </div>
         <div className={css.description}>{description}</div>
+        <EquipmentsList
+          AC={AC}
+          bathroom={bathroom}
+          adults={adults}
+          engine={engine}
+          kitchen={kitchen}
+          transmission={transmission}
+          TV={TV}
+          radio={radio}
+        />
         <Link
           to={`/catalog/${id}`}
           className={css.btn}
