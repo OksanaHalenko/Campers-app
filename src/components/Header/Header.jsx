@@ -21,7 +21,7 @@ const Header = () => (
           </NavLink>
         </li>
         <li>
-          <NavLink to="/campers" className={buildLinkClass}>
+          <NavLink to="/catalog" className={buildLinkClass}>
             Catalog
           </NavLink>
         </li>

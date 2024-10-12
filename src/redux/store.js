@@ -19,14 +19,14 @@ const persistConfig = {
   whitelist: ["campers"],
 };
 
-export const persistedCamperReducer = persistReducer(
+export const persistedCampersReducer = persistReducer(
   persistConfig,
   campersReducer
 );
 
 export const store = configureStore({
   reducer: {
-    camper: persistedCamperReducer,
+    campers: persistedCampersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

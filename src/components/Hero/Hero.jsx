@@ -11,9 +11,9 @@ function Hero() {
             You can find everything you want in our catalog
           </p>
           <Link
-            to="/campers"
+            to="/catalog"
             className={css.btn}
-            aria-label="View the  campers catalog"
+            aria-label="View the campers catalog"
           >
             View Now
           </Link>
