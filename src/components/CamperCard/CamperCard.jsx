@@ -32,7 +32,6 @@ function CamperCard({
   };
   const favoriteItems = useSelector(selectorFavorite);
   const isFavorite = favoriteItems.includes(id);
-  console.log(isFavorite);
 
   return (
     <div className={css.card}>

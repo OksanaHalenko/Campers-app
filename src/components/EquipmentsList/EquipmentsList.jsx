@@ -20,7 +20,7 @@ const EquipmentsList = ({
           aria-label="Air conditioning available"
         >
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-wind`}></use>
+            <use href={`${sprite}#AC`}></use>
           </svg>
           AC
         </li>
@@ -28,7 +28,7 @@ const EquipmentsList = ({
       {engine && (
         <li className={css.equipmentItem} aria-label={`Engine ${engine}`}>
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-Group`}></use>
+            <use href={`${sprite}#engine`}></use>
           </svg>
           {engine}
         </li>
@@ -39,7 +39,7 @@ const EquipmentsList = ({
           aria-label={`Transmission: ${transmission}`}
         >
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-diagram-1`}></use>
+            <use href={`${sprite}#Transmission`}></use>
           </svg>
           {transmission}
         </li>
@@ -47,7 +47,7 @@ const EquipmentsList = ({
       {bathroom && (
         <li className={css.equipmentItem} aria-label="Bathroom available">
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-bi_droplet`}></use>
+            <use href={`${sprite}#Bathroom`}></use>
           </svg>
           Bathroom
         </li>
@@ -55,7 +55,7 @@ const EquipmentsList = ({
       {kitchen && (
         <li className={css.equipmentItem} aria-label="Kitchen available">
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-cup-hot`}></use>
+            <use href={`${sprite}#Kitchen`}></use>
           </svg>
           Kitchen
         </li>
@@ -63,7 +63,7 @@ const EquipmentsList = ({
       {TV && (
         <li className={css.equipmentItem} aria-label="TV available">
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-Vector`}></use>
+            <use href={`${sprite}#TV`}></use>
           </svg>
           TV
         </li>
@@ -71,7 +71,7 @@ const EquipmentsList = ({
       {radio && (
         <li className={css.equipmentItem} aria-label="Radio available">
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-ui-radios`}></use>
+            <use href={`${sprite}#radio`}></use>
           </svg>
           Radio
         </li>
@@ -79,7 +79,7 @@ const EquipmentsList = ({
       {adults && (
         <li className={css.equipmentItem}>
           <svg className={css.icon}>
-            <use href={`${sprite}#icon-people`}></use>
+            <use href={`${sprite}#adults`}></use>
           </svg>
           2 adults
         </li>

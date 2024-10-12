@@ -1,0 +1,70 @@
+.fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.fieldsetLegend {
+  color: #101828;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.line {
+  border: none;
+  height: 1px;
+  background-color: #dadde1;
+  margin: 24px 0;
+}
+.inputsWrapper {
+  display: flex;
+  row-gap: 8px;
+  column-gap: 12px;
+  flex-wrap: wrap;
+}
+.label {
+  display: flex;
+  width: 112px;
+  height: 96px;
+  padding: 16px;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid #dadde1;
+  mix-blend-mode: multiply;
+  cursor: pointer;
+  transition: border-color ease-in;
+}
+.checked {
+  border-color: #e44848;
+}
+
+.input {
+  display: none;
+}
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+.contentText {
+  color: #101828;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.08px;
+}

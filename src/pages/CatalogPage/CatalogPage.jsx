@@ -9,6 +9,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import CampersList from "../../components/CampersList/CampersList";
 import { useEffect } from "react";
 import { fetchCampers } from "../../redux/campers/operations";
+import FiltersPart from "../../components/FiltersPart/FiltersPart";
 
 function CatalogPage() {
   const dispatch = useDispatch();
@@ -22,9 +23,12 @@ function CatalogPage() {
   return (
     <>
       <Header />
-      <div className={css.container}>
+      <div className={css.pageContainer}>
         {isLoading && !error && <Loader />}
-        {error ? <ErrorMessage text={error} /> : <CampersList />}
+        <div className={css.wrapper}>
+          <FiltersPart />
+          {error ? <ErrorMessage text={error} /> : <CampersList />}
+        </div>
       </div>
     </>
   );
