@@ -1,4 +1,4 @@
-import { Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import css from "./CamperPage.module.css";
 import Header from "../../components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,7 +13,11 @@ import Loader from "../../components/Loader/Loader";
 import DetailsAboutCamper from "../../components/DetailsAboutCamper/DetailsAboutCamper";
 import BookForm from "../../components/BookForm/BookForm";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import clsx from "clsx";
 
+const buildLinkClass = ({ isActive }) => {
+  return clsx(css.navigationItem, isActive && css.active);
+};
 function CamperPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
@@ -38,9 +42,23 @@ function CamperPage() {
           ""
         )}
         <div>
+          <ul className={css.navigation}>
+            <li className={css.item}>
+              <NavLink to="features" className={buildLinkClass}>
+                Features
+              </NavLink>
+            </li>
+            <li className={css.item}>
+              <NavLink to="reviews" className={buildLinkClass}>
+                Reviews
+              </NavLink>
+            </li>
+          </ul>
           <hr className={css.line} />
-          <Outlet />
-          <BookForm />
+          <div className={css.underLine}>
+            {camper ? <Outlet /> : ""}
+            <BookForm />
+          </div>
         </div>
       </div>
     </>
