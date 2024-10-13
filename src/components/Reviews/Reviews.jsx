@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import css from "./Reviews.module.css";
 import { selectOneCamper } from "../../redux/campers/selectors";
 import UserAvatar from "../UserAvatar/UserAvatar";
+import StarRating from "../StarRating/StarRating";
 
 function Reviews() {
   const { reviews } = useSelector(selectOneCamper);
@@ -14,7 +15,7 @@ function Reviews() {
               <UserAvatar name={review.reviewer_name} />
               <div className={css.titleName}>
                 <h4 className={css.name}>{review.reviewer_name}</h4>
-                <div>Stars</div>
+                <StarRating rating={review.reviewer_rating} />
               </div>
             </div>
             <p className={css.comment}>{review.comment}</p>

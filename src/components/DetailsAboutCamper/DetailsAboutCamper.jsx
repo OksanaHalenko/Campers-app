@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import css from "./DetailsAboutCamper.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import { selectOneCamper } from "../../redux/campers/selectors";
+import ImagesGallery from "../ImagesGallery/ImagesGallery";
 
 function DetailsAboutCamper() {
   const { name, price, description, rating, totalReviews, location, gallery } =
@@ -28,17 +29,8 @@ function DetailsAboutCamper() {
         </ul>
         <p className={css.price}>€{price}</p>
       </div>
-      <div className={css.imagesWrapper}>
-        <div className={css.imgWrapper}>
-          <img className={css.image} src={gallery[0].original} loading="lazy" />
-        </div>
-        <div className={css.imgWrapper}>
-          <img className={css.image} src={gallery[1].original} loading="lazy" />
-        </div>
-        <div className={css.imgWrapper}>
-          <img className={css.image} src={gallery[2].original} loading="lazy" />
-        </div>
-      </div>
+      <ImagesGallery images={gallery} />
+
       <div className={css.description}>{description}</div>
     </div>
   );

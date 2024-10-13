@@ -3,10 +3,11 @@ import * as Yup from "yup";
 import SubmitBtn from "../SubmitBtn/SubmitBtn";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 
+const date = new Date();
 const initialValues = {
   username: "",
   email: "",
-  bookingDate: new Date(),
+  bookingDate: date.toISOString().split("T")[0],
   comment: "",
 };
 const validationSchema = Yup.object().shape({
