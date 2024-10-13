@@ -1,13 +1,22 @@
 .wrapperDetails {
   display: flex;
   flex-direction: column;
-  padding: 120px 64px;
+  padding: 48px 64px;
   gap: 28px;
 }
 .titleWrapper {
+  padding: 0;
 }
-.name,
+.name {
+  margin: 8px 0;
+  color: #101828;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+}
 .price {
+  margin-top: 16px;
+  margin-bottom: 0;
   color: #101828;
   font-size: 24px;
   font-weight: 600;
