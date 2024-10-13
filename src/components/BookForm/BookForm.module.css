@@ -1,0 +1,41 @@
+.wrapper {
+  padding: 40px;
+}
+.title {
+  color: #101828;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+.text {
+  color: #6c717b;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.field {
+  padding: 18px;
+  border-radius: 12px;
+  background-color: #f7f7f7;
+  border: none;
+}
+.field:hover,
+.field:focus,
+.field:active {
+  outline: none;
+  border: none;
+}
+.btn {
+  margin: 0 auto;
+  margin-top: 24px;
+}
