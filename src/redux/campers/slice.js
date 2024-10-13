@@ -18,15 +18,14 @@ const campersSlice = createSlice({
   name: "campers",
   initialState: {
     items: [],
+    totalCampers: null,
     isFavorite: [],
+    filters: null,
     oneCamper: null,
     loading: false,
     error: null,
   },
   reducers: {
-    clearItems: (state) => {
-      state.items = [];
-    },
     toggleFavorite: (state, action) => {
       const id = action.payload;
       if (state.isFavorite.includes(id)) {
@@ -37,6 +36,10 @@ const campersSlice = createSlice({
         state.isFavorite.push(id);
       }
     },
+    saveFilters: (state, action) => {
+      const filters = action.payload;
+      state.filters = filters;
+    },
   },
   extraReducers: (bundler) => {
     bundler
@@ -45,6 +48,7 @@ const campersSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.items = action.payload.items;
+        state.totalCampers = action.payload.total;
       })
       .addCase(fetchCampers.rejected, handleRejected)
       .addCase(fetchCampersByParams.pending, handlePending)
@@ -52,6 +56,7 @@ const campersSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.items = action.payload.items;
+        state.totalCampers = action.payload.total;
       })
       .addCase(fetchCampersByParams.rejected, handleRejected)
       .addCase(fetchCamperById.pending, handlePending)
@@ -64,6 +69,7 @@ const campersSlice = createSlice({
   },
 });
 
-export const { clearItems } = campersSlice.actions;
+export const { saveFilters } = campersSlice.actions;
 export const { toggleFavorite } = campersSlice.actions;
+
 export const campersReducer = campersSlice.reducer;

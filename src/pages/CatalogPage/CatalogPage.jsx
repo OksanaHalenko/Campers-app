@@ -5,7 +5,6 @@ import { selectError, selectLoading } from "../../redux/campers/selectors";
 
 import Header from "../../components/Header/Header";
 import Loader from "../../components/Loader/Loader";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import CampersList from "../../components/CampersList/CampersList";
 import { useEffect } from "react";
 import { fetchCampers } from "../../redux/campers/operations";
@@ -27,7 +26,7 @@ function CatalogPage() {
         {isLoading && !error && <Loader />}
         <div className={css.wrapper}>
           <FiltersPart />
-          {error ? <ErrorMessage text={error} /> : <CampersList />}
+          <CampersList />
         </div>
       </div>
     </>

@@ -1,0 +1,30 @@
+.loadMoreBtn {
+  display: inline-flex;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 200px;
+  border: 1px solid #dadde1;
+  color: #101828;
+  background-color: var(--White);
+  margin-bottom: 40px;
+  transition: border-color ease-in;
+  align-self: center;
+  min-width: 145px;
+}
+
+.loadMoreBtn:hover,
+.loadMoreBtn:focus {
+  border-color: #d84343;
+}
+
+.disabled {
+  cursor: not-allowed;
+  background-color: #dadde1;
+}
+
+.loadMoreBtn:hover.disabled,
+.loadMoreBtn:focus.disabled {
+  border-color: #dadde1;
+}

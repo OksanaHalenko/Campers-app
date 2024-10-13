@@ -5,6 +5,7 @@ import FilterFieldset from "../FilterFieldset/FilterFieldset";
 import SubmitBtn from "../SubmitBtn/SubmitBtn";
 import { useDispatch } from "react-redux";
 import { fetchCampersByParams } from "../../redux/campers/operations";
+import { saveFilters } from "../../redux/campers/slice";
 
 const equipment = {
   AC: "AC",
@@ -50,7 +51,7 @@ function FiltersPart() {
       ...Object.fromEntries(selectCheckboxes.map((item) => [item, true])),
       form: radioValue,
     };
-
+    dispatch(saveFilters);
     dispatch(fetchCampersByParams(filters));
   };
 
