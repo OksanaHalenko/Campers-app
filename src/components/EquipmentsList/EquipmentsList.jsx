@@ -39,7 +39,7 @@ const EquipmentsList = ({
           aria-label={`Transmission: ${transmission}`}
         >
           <svg className={css.icon}>
-            <use href={`${sprite}#Transmission`}></use>
+            <use href={`${sprite}#transmission`}></use>
           </svg>
           {transmission}
         </li>
@@ -47,7 +47,7 @@ const EquipmentsList = ({
       {bathroom && (
         <li className={css.equipmentItem} aria-label="Bathroom available">
           <svg className={css.icon}>
-            <use href={`${sprite}#Bathroom`}></use>
+            <use href={`${sprite}#bathroom`}></use>
           </svg>
           Bathroom
         </li>
@@ -55,7 +55,7 @@ const EquipmentsList = ({
       {kitchen && (
         <li className={css.equipmentItem} aria-label="Kitchen available">
           <svg className={css.icon}>
-            <use href={`${sprite}#Kitchen`}></use>
+            <use href={`${sprite}#kitchen`}></use>
           </svg>
           Kitchen
         </li>
