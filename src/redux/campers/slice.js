@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./operations.js";
+import {
+  fetchCamperById,
+  fetchCampers,
+  fetchCampersByParams,
+} from "./operations.js";
 
 const handlePending = (state) => {
   state.loading = true;
@@ -15,6 +19,7 @@ const campersSlice = createSlice({
   initialState: {
     items: [],
     isFavorite: [],
+    oneCamper: null,
     loading: false,
     error: null,
   },
@@ -41,7 +46,21 @@ const campersSlice = createSlice({
         state.error = null;
         state.items = action.payload.items;
       })
-      .addCase(fetchCampers.rejected, handleRejected);
+      .addCase(fetchCampers.rejected, handleRejected)
+      .addCase(fetchCampersByParams.pending, handlePending)
+      .addCase(fetchCampersByParams.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.items = action.payload.items;
+      })
+      .addCase(fetchCampersByParams.rejected, handleRejected)
+      .addCase(fetchCamperById.pending, handlePending)
+      .addCase(fetchCamperById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.oneCamper = action.payload;
+      })
+      .addCase(fetchCamperById.rejected, handleRejected);
   },
 });
 

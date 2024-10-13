@@ -25,13 +25,26 @@ export const fetchCampers = createAsyncThunk(
 );
 
 export const fetchCampersByParams = createAsyncThunk(
-  "campers/fetchAll",
+  "campers/fetchByParams",
   async (filters, thunkAPI) => {
     try {
       const params = { ...defaultParams, ...filters };
       const { data } = await axios.get("/campers", {
         params,
       });
+
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchCamperById = createAsyncThunk(
+  "campers/fetchOne",
+  async (camperId, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`/campers/${camperId}`);
 
       return data;
     } catch (e) {
