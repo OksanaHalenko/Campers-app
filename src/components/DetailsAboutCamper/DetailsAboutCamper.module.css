@@ -1,7 +1,6 @@
 .wrapperDetails {
   display: flex;
   flex-direction: column;
-  padding: 48px 64px;
   gap: 28px;
 }
 .titleWrapper {

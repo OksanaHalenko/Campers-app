@@ -1,4 +1,11 @@
 .pageContainer {
   margin-top: 72px;
   padding: 0;
+  padding: 48px 64px;
+}
+.line {
+  border: none;
+  height: 1px;
+  background-color: #dadde1;
+  margin: 24px 0;
 }
