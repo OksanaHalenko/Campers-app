@@ -1,11 +1,19 @@
-import { useState } from "react";
 import css from "./FiltersPart.module.css";
 import sprite from "../../assets/icons/sprite.svg";
 import FilterFieldset from "../FilterFieldset/FilterFieldset";
 import SubmitBtn from "../SubmitBtn/SubmitBtn";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchCampersByParams } from "../../redux/campers/operations";
-import { saveFilters } from "../../redux/campers/slice";
+import {
+  saveLocation,
+  saveRadioValue,
+  toggleCheckboxes,
+} from "../../redux/campers/slice";
+import {
+  selectLocation,
+  selectRadioValue,
+  selectFiltersCheckboxes,
+} from "../../redux/campers/selectors.js";
 
 const equipment = {
   AC: "AC",
@@ -21,37 +29,28 @@ const vehicleType = {
 };
 
 function FiltersPart() {
-  const [location, setLocation] = useState("");
-  const [selectCheckboxes, setSelectCheckboxes] = useState([]);
-  const [radioValue, setRadioValue] = useState("panelTruck");
   const dispatch = useDispatch();
+  const location = useSelector(selectLocation);
+  const selectCheckboxes = useSelector(selectFiltersCheckboxes);
+  const radioValue = useSelector(selectRadioValue);
+  const filters = {
+    location: location.split(",")[0],
+    form: radioValue,
+    ...Object.fromEntries(selectCheckboxes.map((item) => [item, true])),
+  };
 
-  const handleLocationChange = (e) => setLocation(e.target.value);
+  const handleLocationChange = (e) => dispatch(saveLocation(e.target.value));
 
-  const handleCheckboxChange = (event) => {
-    const { value, checked } = event.target;
-    if (checked) {
-      setSelectCheckboxes((prevSelected) => [...prevSelected, value]);
-    } else {
-      setSelectCheckboxes((prevSelected) =>
-        prevSelected.filter((checkbox) => checkbox !== value)
-      );
-    }
+  const handleCheckboxChange = (e) => {
+    dispatch(toggleCheckboxes(e.target.value));
   };
 
   const handleRadioChange = (item) => {
-    setRadioValue(item);
+    dispatch(saveRadioValue(item));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const filters = {
-      location: location.split(",")[0],
-      ...Object.fromEntries(selectCheckboxes.map((item) => [item, true])),
-      form: radioValue,
-    };
-    dispatch(saveFilters);
     dispatch(fetchCampersByParams(filters));
   };
 

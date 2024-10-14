@@ -20,7 +20,9 @@ const campersSlice = createSlice({
     items: [],
     totalCampers: null,
     isFavorite: [],
-    filters: null,
+    location: null,
+    selectCheckboxes: [],
+    radioValue: null,
     oneCamper: null,
     loading: false,
     error: null,
@@ -36,9 +38,21 @@ const campersSlice = createSlice({
         state.isFavorite.push(id);
       }
     },
-    saveFilters: (state, action) => {
-      const filters = action.payload;
-      state.filters = filters;
+    saveLocation: (state, action) => {
+      state.filters = action.payload;
+    },
+    saveRadioValue: (state, action) => {
+      state.radioValue = action.payload;
+    },
+    toggleCheckboxes: (state, action) => {
+      const checkbox = action.payload;
+      if (state.isFavorite.includes(checkbox)) {
+        state.selectCheckboxes = state.selectCheckboxes.filter(
+          (item) => item !== checkbox
+        );
+      } else {
+        state.selectCheckboxes.push(checkbox);
+      }
     },
   },
   extraReducers: (bundler) => {
@@ -69,7 +83,9 @@ const campersSlice = createSlice({
   },
 });
 
-export const { saveFilters } = campersSlice.actions;
+export const { saveLocation } = campersSlice.actions;
+export const { saveRadioValue } = campersSlice.actions;
+export const { toggleCheckboxes } = campersSlice.actions;
 export const { toggleFavorite } = campersSlice.actions;
 
 export const campersReducer = campersSlice.reducer;
