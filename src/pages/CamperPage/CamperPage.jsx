@@ -32,35 +32,37 @@ function CamperPage() {
   return (
     <>
       <Header />
-      <div className={css.pageContainer}>
-        {isLoading && !error && <Loader />}
-        {error ? (
-          <ErrorMessage text={error} />
-        ) : camper ? (
-          <DetailsAboutCamper />
-        ) : (
-          ""
-        )}
-        <div>
-          <ul className={css.navigation}>
-            <li className={css.item}>
-              <NavLink to="features" className={buildLinkClass}>
-                Features
-              </NavLink>
-            </li>
-            <li className={css.item}>
-              <NavLink to="reviews" className={buildLinkClass}>
-                Reviews
-              </NavLink>
-            </li>
-          </ul>
-          <hr className={css.line} />
-          <div className={css.underLine}>
-            {camper ? <Outlet /> : ""}
-            <BookForm />
+      <main>
+        <div className={css.pageContainer}>
+          {isLoading && !error && <Loader />}
+          {error ? (
+            <ErrorMessage text={error} />
+          ) : camper ? (
+            <DetailsAboutCamper />
+          ) : (
+            ""
+          )}
+          <div>
+            <ul className={css.navigation}>
+              <li className={css.item}>
+                <NavLink to="features" className={buildLinkClass}>
+                  Features
+                </NavLink>
+              </li>
+              <li className={css.item}>
+                <NavLink to="reviews" className={buildLinkClass}>
+                  Reviews
+                </NavLink>
+              </li>
+            </ul>
+            <hr className={css.line} />
+            <div className={css.underLine}>
+              {camper ? <Outlet /> : ""}
+              <BookForm />
+            </div>
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

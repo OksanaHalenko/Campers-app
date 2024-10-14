@@ -24,11 +24,11 @@ export const fetchCampers = createAsyncThunk(
   }
 );
 
-export const fetchCampersByParams = createAsyncThunk(
-  "campers/fetchByParams",
-  async (filters, thunkAPI) => {
+export const fetchMoreCampers = createAsyncThunk(
+  "campers/fetchMore",
+  async (customParams = {}, thunkAPI) => {
     try {
-      const params = { ...defaultParams, ...filters };
+      const params = { ...defaultParams, ...customParams };
       const { data } = await axios.get("/campers", {
         params,
       });

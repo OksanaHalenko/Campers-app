@@ -3,7 +3,7 @@ import sprite from "../../assets/icons/sprite.svg";
 import FilterFieldset from "../FilterFieldset/FilterFieldset";
 import SubmitBtn from "../SubmitBtn/SubmitBtn";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCampersByParams } from "../../redux/campers/operations";
+import { fetchCampers } from "../../redux/campers/operations";
 import {
   saveLocation,
   saveRadioValue,
@@ -33,11 +33,6 @@ function FiltersPart() {
   const location = useSelector(selectLocation);
   const selectCheckboxes = useSelector(selectFiltersCheckboxes);
   const radioValue = useSelector(selectRadioValue);
-  const filters = {
-    location: location.split(",")[0],
-    form: radioValue,
-    ...Object.fromEntries(selectCheckboxes.map((item) => [item, true])),
-  };
 
   const handleLocationChange = (e) => dispatch(saveLocation(e.target.value));
 
@@ -51,7 +46,12 @@ function FiltersPart() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(fetchCampersByParams(filters));
+    const filters = {
+      location: location.split(",")[0],
+      form: radioValue,
+      ...Object.fromEntries(selectCheckboxes.map((item) => [item, true])),
+    };
+    dispatch(fetchCampers(filters));
   };
 
   return (

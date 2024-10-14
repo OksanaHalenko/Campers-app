@@ -1,13 +1,16 @@
 import { Hourglass } from "react-loader-spinner";
+import css from "./Loader.module.css";
 
 function Loader({ loading }) {
   return (
-    <Hourglass
-      visible={loading}
-      height="80"
-      width="80"
-      colors={["#306cce", "#72a1ed"]}
-    />
+    <div className={css.wrapper}>
+      <Hourglass
+        visible={loading}
+        height="80"
+        width="80"
+        colors={["#E44848", "#DADDE1"]}
+      />
+    </div>
   );
 }
 

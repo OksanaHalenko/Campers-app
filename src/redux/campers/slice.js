@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   fetchCamperById,
   fetchCampers,
-  fetchCampersByParams,
+  fetchMoreCampers,
 } from "./operations.js";
 
 const handlePending = (state) => {
@@ -20,9 +20,9 @@ const campersSlice = createSlice({
     items: [],
     totalCampers: null,
     isFavorite: [],
-    location: null,
+    location: "",
     selectCheckboxes: [],
-    radioValue: null,
+    radioValue: "",
     oneCamper: null,
     loading: false,
     error: null,
@@ -46,7 +46,7 @@ const campersSlice = createSlice({
     },
     toggleCheckboxes: (state, action) => {
       const checkbox = action.payload;
-      if (state.isFavorite.includes(checkbox)) {
+      if (state.selectCheckboxes.includes(checkbox)) {
         state.selectCheckboxes = state.selectCheckboxes.filter(
           (item) => item !== checkbox
         );
@@ -65,14 +65,14 @@ const campersSlice = createSlice({
         state.totalCampers = action.payload.total;
       })
       .addCase(fetchCampers.rejected, handleRejected)
-      .addCase(fetchCampersByParams.pending, handlePending)
-      .addCase(fetchCampersByParams.fulfilled, (state, action) => {
+      .addCase(fetchMoreCampers.pending, handlePending)
+      .addCase(fetchMoreCampers.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.items = action.payload.items;
+        state.items = [...state.items, ...action.payload.items];
         state.totalCampers = action.payload.total;
       })
-      .addCase(fetchCampersByParams.rejected, handleRejected)
+      .addCase(fetchMoreCampers.rejected, handleRejected)
       .addCase(fetchCamperById.pending, handlePending)
       .addCase(fetchCamperById.fulfilled, (state, action) => {
         state.loading = false;

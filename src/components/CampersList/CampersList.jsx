@@ -4,25 +4,36 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectAllCampers,
   selectError,
+  selectFiltersCheckboxes,
+  selectLocation,
+  selectRadioValue,
   selectTotalCampers,
 } from "../../redux/campers/selectors";
 import CamperCard from "../CamperCard/CamperCard";
 import NoResults from "../NoResults/NoResults";
-import { fetchCampers } from "../../redux/campers/operations";
+import { fetchCampers, fetchMoreCampers } from "../../redux/campers/operations";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 
-let limit = 4;
-let limitStep = 4;
+const limit = 4;
+let page = 1;
 function CampersList() {
   const dispatch = useDispatch();
   const campers = useSelector(selectAllCampers);
   const totalCampers = useSelector(selectTotalCampers);
   const error = useSelector(selectError);
+  const location = useSelector(selectLocation);
+  const selectCheckboxes = useSelector(selectFiltersCheckboxes);
+  const radioValue = useSelector(selectRadioValue);
+  const filters = {
+    location: location.split(",")[0],
+    form: radioValue,
+    ...Object.fromEntries(selectCheckboxes.map((item) => [item, true])),
+  };
 
   const handleMore = () => {
-    if (limit < totalCampers) {
-      limit += limitStep;
-      dispatch(fetchCampers({ limit }));
+    if (limit * page < totalCampers) {
+      page += 1;
+      dispatch(fetchMoreCampers({ page, limit, ...filters }));
     }
   };
 
