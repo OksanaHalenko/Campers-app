@@ -100,7 +100,6 @@
   font-weight: 400;
   line-height: 1.5;
   display: -webkit-box;
-  width: 525px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }

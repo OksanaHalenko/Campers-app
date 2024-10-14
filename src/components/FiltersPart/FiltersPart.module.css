@@ -25,6 +25,7 @@
   border: none;
   border-radius: 12px;
   background-color: #f7f7f7;
+  color: #101828;
 }
 .locationInput:focus,
 .locationInput:hover {
