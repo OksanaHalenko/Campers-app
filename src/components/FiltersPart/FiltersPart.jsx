@@ -34,7 +34,9 @@ function FiltersPart() {
   const selectCheckboxes = useSelector(selectFiltersCheckboxes);
   const radioValue = useSelector(selectRadioValue);
 
-  const handleLocationChange = (e) => dispatch(saveLocation(e.target.value));
+  const handleLocationChange = (e) => {
+    dispatch(saveLocation(e.target.value));
+  };
 
   const handleCheckboxChange = (e) => {
     dispatch(toggleCheckboxes(e.target.value));

@@ -39,7 +39,7 @@ const campersSlice = createSlice({
       }
     },
     saveLocation: (state, action) => {
-      state.filters = action.payload;
+      state.location = action.payload;
     },
     saveRadioValue: (state, action) => {
       state.radioValue = action.payload;

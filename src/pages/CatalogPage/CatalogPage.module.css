@@ -1,6 +1,8 @@
 .pageContainer {
+  padding: 48px 64px;
+  margin-top: 72px;
 }
 .wrapper {
   display: flex;
-  gap: 0;
+  gap: 64px;
 }
