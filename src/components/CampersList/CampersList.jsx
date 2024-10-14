@@ -11,7 +11,7 @@ import {
 } from "../../redux/campers/selectors";
 import CamperCard from "../CamperCard/CamperCard";
 import NoResults from "../NoResults/NoResults";
-import { fetchCampers, fetchMoreCampers } from "../../redux/campers/operations";
+import { fetchMoreCampers } from "../../redux/campers/operations";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 
 const limit = 4;

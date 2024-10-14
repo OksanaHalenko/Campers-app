@@ -85,7 +85,7 @@ function CamperCard({
           radio={radio}
         />
         <Link
-          to={`/catalog/${id}`}
+          to={`/catalog/${id}/features`}
           className={css.btn}
           aria-label="Show camper details"
         >

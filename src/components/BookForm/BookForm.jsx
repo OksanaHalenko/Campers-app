@@ -2,6 +2,8 @@ import css from "./BookForm.module.css";
 import * as Yup from "yup";
 import SubmitBtn from "../SubmitBtn/SubmitBtn";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const date = new Date();
 const initialValues = {
@@ -26,7 +28,17 @@ const validationSchema = Yup.object().shape({
 function BookForm() {
   const handleSubmit = (values, actions) => {
     console.log(values);
-    actions.resetForm();
+    if (actions) {
+      toast.success(
+        "Form successfully submitted! Thank you for the order! ",
+        {
+          position: "top-center",
+          autoClose: 3000,
+        },
+        1000
+      );
+      actions.resetForm();
+    }
   };
 
   return (
@@ -89,6 +101,7 @@ function BookForm() {
           </div>
         </Form>
       </Formik>
+      <ToastContainer />
     </div>
   );
 }
